@@ -219,11 +219,11 @@ export const mockReports: LostReport[] = [
 ];
 
 export const mockUser: UserProfile = {
-  name: 'Ahmad Rizki',
-  nim: '13521142',
+  name: 'Ibay Anjay',
+  nim: '182232323',
   faculty: 'Sekolah Teknik Elektro dan Informatika',
-  major: 'Teknik Informatika',
-  email: 'ahmad.rizki@students.itb.ac.id',
+  major: 'Sistem dan Teknologi Informasi',
+  email: 'ibay.anjay@students.itb.ac.id',
   notificationCount: 0,
 };
 
@@ -233,3 +233,29 @@ export const todayStats = {
   totalInLocker: 8,
   activeReports: 0,
 };
+
+export interface UserAccount {
+  username: string;
+  password: string;
+  name: string;
+  avatar?: string;
+}
+
+export const mockUsers: UserAccount[] = [
+  {
+    username: 'admin',
+    password: 'password123',
+    name: 'Admin User',
+    avatar: 'https://github.com/shadcn.png',
+  },
+  {
+    username: 'user',
+    password: 'user123',
+    name: 'Regular User',
+  },
+  {
+    username: '182232323',
+    password: 'password',
+    name: 'Ibay Anjay',
+  }
+];

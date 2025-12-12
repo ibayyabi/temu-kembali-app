@@ -118,7 +118,14 @@ export function ProfileScreen() {
 
       {/* Logout */}
       <div className="px-4 mt-4">
-        <button className="w-full flex items-center justify-center gap-2 py-4 text-destructive font-medium hover:bg-destructive/5 rounded-xl transition-colors">
+        <button 
+          onClick={() => {
+            // Clear session if any
+            sessionStorage.removeItem("currentUser");
+            window.location.href = "/login";
+          }}
+          className="w-full flex items-center justify-center gap-2 py-4 text-destructive font-medium hover:bg-destructive/5 rounded-xl transition-colors"
+        >
           <LogOut size={18} />
           <span>Keluar</span>
         </button>
