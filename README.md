@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# TemuKembali App
 
-## Project info
+TemuKembali adalah platform "Lost & Found" terintegrasi yang dirancang khusus untuk lingkungan kampus Institut Teknologi Bandung (ITB). Aplikasi ini memudahkan civitas akademika dalam melaporkan dan menemukan barang yang hilang.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Fitur Utama
 
-## How can I edit this code?
+- **Pencarian Barang**: Cari barang hilang berdasarkan kategori, lokasi, dan deskripsi.
+- **Pelaporan**: Laporkan barang hilang atau barang temuan dengan mudah.
+- **Sistem Match**: Fitur pencocokan otomatis antara laporan kehilangan dan barang temuan (mock implementation).
+- **Notifikasi**: Dapatkan pemberitahuan status laporan (mock implementation).
+- **Mobile-First Design**: Antarmuka responsif yang dioptimalkan untuk tampilan mobile, memberikan pengalaman pengguna seperti aplikasi native.
 
-There are several ways of editing your application.
+## Teknologi yang Digunakan
 
-**Use Lovable**
+- **Frontend**: React, TypeScript, Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI, Radix UI
+- **Icons**: Lucide React
+- **State Management**: React Query, Zustand
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Prasyarat
 
-Changes made via Lovable will be committed automatically to this repo.
+Sebelum menjalankan aplikasi, pastikan Anda telah menginstal:
 
-**Use your preferred IDE**
+- [Node.js](https://nodejs.org/) (versi 18 atau lebih baru)
+- npm (biasanya terinstall bersama Node.js)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Cara Menjalankan Aplikasi
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi di lingkungan lokal Anda:
 
-Follow these steps:
+1.  **Clone Repository** (jika belum):
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+    ```bash
+    git clone <repository-url>
+    cd temu-kembali-app
+    ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2.  **Instal Dependensi**:
+    Jalankan perintah berikut di terminal untuk menginstal semua library yang dibutuhkan.
 
-# Step 3: Install the necessary dependencies.
-npm i
+    ```bash
+    npm install
+    ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3.  **Jalankan Development Server**:
+    Mulai server lokal untuk melihat aplikasi.
 
-**Edit a file directly in GitHub**
+    ```bash
+    npm run dev
+    ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+    Aplikasi biasanya akan berjalan di `http://localhost:8080/`.
 
-**Use GitHub Codespaces**
+4.  **Build untuk Produksi** (Opsional):
+    Untuk membuat versi produksi yang dioptimalkan.
+    ```bash
+    npm run build
+    ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Akun Login (Dummy)
 
-## What technologies are used for this project?
+Aplikasi ini menggunakan data mock untuk simulasi login. Anda dapat menggunakan kredensial berikut untuk masuk:
 
-This project is built with:
+| Role      | Username / NIM | Password      | Nama Pengguna |
+| :-------- | :------------- | :------------ | :------------ |
+| **Admin** | `admin`        | `password123` | Admin User    |
+| **User**  | `user`         | `user123`     | Regular User  |
+| **User**  | `182232323`    | `password`    | Ibay Anjay    |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Catatan**: Data login ini bersifat statis dan didefinisikan dalam `src/data/mockData.ts`.
 
-## How can I deploy this project?
+## Struktur Project
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- `src/components`: Komponen UI reusable.
+- `src/pages`: Halaman utama aplikasi (Index, Login, NotFound).
+- `src/screens`: Layar/Screen spesifik untuk fitur (Home, Report, Activity, Profile).
+- `src/data`: Data mock untuk item, laporan, dan user.
 
-## Can I connect a custom domain to my Lovable project?
+## Lisensi
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Private project for TemuKembali.
