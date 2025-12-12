@@ -1,6 +1,7 @@
-export type Category = 'elektronik' | 'kunci' | 'dompet' | 'botol' | 'lainnya';
+export type Category = 'elektronik' | 'dokumen' | 'pakaian' | 'kunci' | 'botol' | 'lainnya';
 
 export type ItemStatus = 'available' | 'claimed';
+export type ReportStatus = 'searching' | 'matched' | 'completed' | 'expired';
 
 export interface LostItem {
   id: string;
@@ -15,19 +16,45 @@ export interface LostItem {
   lockerNumber?: string;
 }
 
+export interface LostReport {
+  id: string;
+  name: string;
+  category: Category;
+  location: string;
+  date: string;
+  description: string;
+  imageUrl?: string;
+  status: ReportStatus;
+  matchedItemId?: string;
+  createdAt: string;
+}
+
 export interface UserProfile {
   name: string;
   nim: string;
   faculty: string;
+  major: string;
   email: string;
   avatar?: string;
   notificationCount: number;
 }
 
+export interface Notification {
+  id: string;
+  type: 'match' | 'info' | 'success';
+  title: string;
+  message: string;
+  itemId?: string;
+  reportId?: string;
+  createdAt: string;
+  read: boolean;
+}
+
 export const categories: { id: Category; label: string; icon: string }[] = [
   { id: 'elektronik', label: 'Elektronik', icon: 'Smartphone' },
+  { id: 'dokumen', label: 'Dokumen', icon: 'FileText' },
+  { id: 'pakaian', label: 'Pakaian', icon: 'Shirt' },
   { id: 'kunci', label: 'Kunci', icon: 'Key' },
-  { id: 'dompet', label: 'Dompet', icon: 'Wallet' },
   { id: 'botol', label: 'Botol Minum', icon: 'CupSoda' },
   { id: 'lainnya', label: 'Lainnya', icon: 'Package' },
 ];
@@ -50,10 +77,10 @@ export const locations = [
 export const mockItems: LostItem[] = [
   {
     id: '1',
-    name: 'Tumbler Corkcicle Hitam',
+    name: 'Tumbler Biru Corkcicle',
     category: 'botol',
-    description: 'Tumbler warna hitam matte dengan tutup stainless steel. Ada stiker kecil Gajah ITB di badan tumbler.',
-    location: 'GKU Barat',
+    description: 'Tumbler warna biru metalik dengan tutup stainless steel. Ada stiker kecil Gajah ITB di badan tumbler. Kapasitas 500ml.',
+    location: 'Labtek V',
     dateFound: '2024-12-11',
     timeFound: '14:30',
     imageUrl: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop',
@@ -75,7 +102,7 @@ export const mockItems: LostItem[] = [
   {
     id: '3',
     name: 'Dompet Kulit Coklat',
-    category: 'dompet',
+    category: 'lainnya',
     description: 'Dompet lipat kulit warna coklat tua. Berisi beberapa kartu dan foto.',
     location: 'Perpustakaan Pusat',
     dateFound: '2024-12-10',
@@ -122,7 +149,7 @@ export const mockItems: LostItem[] = [
   {
     id: '7',
     name: 'Jaket Denim Biru',
-    category: 'lainnya',
+    category: 'pakaian',
     description: 'Jaket denim warna biru klasik ukuran M. Ada pin kecil berbentuk bintang di kerah.',
     location: 'Sunken Court',
     dateFound: '2024-12-08',
@@ -144,13 +171,13 @@ export const mockItems: LostItem[] = [
   },
   {
     id: '9',
-    name: 'Kunci Kos dengan Gantungan',
-    category: 'kunci',
-    description: 'Satu set kunci (3 kunci) dengan gantungan boneka kelinci pink.',
+    name: 'KTM ITB',
+    category: 'dokumen',
+    description: 'Kartu Tanda Mahasiswa ITB atas nama mahasiswa STEI angkatan 2021.',
     location: 'GKU Timur',
     dateFound: '2024-12-07',
     timeFound: '08:30',
-    imageUrl: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?w=400&h=400&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1578670812003-60745e2c2ea9?w=400&h=400&fit=crop',
     status: 'available',
     lockerNumber: 'C-08',
   },
@@ -167,16 +194,42 @@ export const mockItems: LostItem[] = [
   },
 ];
 
+export const mockReports: LostReport[] = [
+  {
+    id: 'r1',
+    name: 'Jaket Hoodie Abu-abu',
+    category: 'pakaian',
+    location: 'CC Barat',
+    date: '2024-12-10',
+    description: 'Jaket hoodie warna abu-abu dengan logo kampus di bagian depan.',
+    status: 'searching',
+    createdAt: '2024-12-10T10:30:00',
+  },
+  {
+    id: 'r2',
+    name: 'Flashdisk Kingston 16GB',
+    category: 'elektronik',
+    location: 'Labtek VI',
+    date: '2024-12-08',
+    description: 'Flashdisk warna hitam berisi file tugas kuliah.',
+    status: 'completed',
+    matchedItemId: '8',
+    createdAt: '2024-12-08T14:00:00',
+  },
+];
+
 export const mockUser: UserProfile = {
   name: 'Ahmad Rizki',
-  nim: '13521xxx',
+  nim: '13521142',
   faculty: 'Sekolah Teknik Elektro dan Informatika',
+  major: 'Teknik Informatika',
   email: 'ahmad.rizki@students.itb.ac.id',
-  notificationCount: 2,
+  notificationCount: 0,
 };
 
 export const todayStats = {
   itemsFound: 3,
   itemsClaimed: 1,
   totalInLocker: 8,
+  activeReports: 0,
 };
