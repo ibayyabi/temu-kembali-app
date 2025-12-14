@@ -183,7 +183,7 @@ export function ReportScreen({ onMatchFound }: ReportScreenProps) {
               </label>
               <input
                 type="text"
-                placeholder="Contoh: Tumbler Biru"
+                placeholder="Contoh: KTM"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full h-12 px-4 bg-card border border-border/50 rounded-xl text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
